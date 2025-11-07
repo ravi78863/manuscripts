@@ -16,7 +16,7 @@ CONFIG = {
     "model_path": "best_model.pth",
     "encoder": "resnet34",
     "classes": 2,
-    "device": "cpu",  # force CPU mode
+    "device": "cpu",  # force CPU mode for Render
     "threshold": 0.85
 }
 # --- End Configuration ---
