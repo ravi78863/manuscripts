@@ -30,26 +30,24 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16 MB max upload size
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # --- Lazy Load Model ---
+# Do not load the model at startup
 manuscript_detector = None
 
 def get_model_instance():
-    """Load ManuscriptDamageDetector only once (lazy init to save memory)."""
+    """
+    Load the ManuscriptDamageDetector only once (lazy loading).
+    """
     global manuscript_detector
     if manuscript_detector is None:
-        try:
-            manuscript_detector = ManuscriptDamageDetector(
-                model_path=CONFIG["model_path"],
-                encoder=CONFIG["encoder"],
-                classes=CONFIG["classes"],
-                device=CONFIG["device"],
-                threshold=CONFIG["threshold"]
-            )
-            print("✅ Model loaded successfully (CPU mode).")
-        except Exception as e:
-            print(f"❌ Model initialization failed: {e}")
-            manuscript_detector = None
+        manuscript_detector = ManuscriptDamageDetector(
+            model_path=CONFIG["model_path"],
+            encoder=CONFIG["encoder"],
+            classes=CONFIG["classes"],
+            device=CONFIG["device"],
+            threshold=CONFIG["threshold"]
+        )
+        print("✅ Model loaded successfully (CPU mode).")
     return manuscript_detector
-
 # --- Utility Functions ---
 def allowed_file(filename):
     return '.' in filename and \
