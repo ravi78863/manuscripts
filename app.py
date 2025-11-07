@@ -16,7 +16,7 @@ CONFIG = {
     "model_path": "best_model.pth",
     "encoder": "resnet34",
     "classes": 2,
-    "device": "cuda" if torch.cuda.is_available() else "cpu",
+    "device": "cpu",  # force CPU mode
     "threshold": 0.85
 }
 # --- End Configuration ---
