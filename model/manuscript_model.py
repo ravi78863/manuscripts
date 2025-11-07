@@ -5,11 +5,8 @@ from PIL import Image
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
 import os
-import sys
-import importlib
 
-# --- CRUCIAL IMPORT FIX ---
-# Dynamically import get_model from model/legacy_models.py, no hardcoded path
+# ✅ Correct import — works on Render and locally
 try:
     from model.legacy_models import get_model
     print("✅ Successfully imported get_model from model/legacy_models.py")
@@ -20,10 +17,7 @@ except Exception as e:
 
 class ManuscriptDamageDetector:
     def __init__(self, model_path, encoder, classes, device, threshold):
-        """
-        Main class for damage detection inference.
-        Loads the trained model, applies preprocessing, prediction, and visualization.
-        """
+        """Main class for damage detection inference."""
         self.device = torch.device(device if torch.cuda.is_available() else "cpu")
         self.threshold = threshold
         self.model = self._load_model(model_path, encoder, classes)
@@ -38,9 +32,7 @@ class ManuscriptDamageDetector:
         print(f"✅ Model initialized successfully on device: {self.device}")
 
     def _load_model(self, model_path, encoder, classes):
-        """
-        Loads the PyTorch model with weights.
-        """
+        """Loads the PyTorch model with weights."""
         if not os.path.exists(model_path):
             raise FileNotFoundError(
                 f"Model weights not found at {model_path}. "
@@ -56,9 +48,7 @@ class ManuscriptDamageDetector:
         return model
 
     def predict(self, image_path):
-        """
-        Runs the full prediction pipeline and returns results (damage %, images).
-        """
+        """Runs the full prediction pipeline and returns results (damage %, images)."""
         try:
             # --- Step 1: Load and preprocess ---
             image = np.array(Image.open(image_path).convert("RGB"))
