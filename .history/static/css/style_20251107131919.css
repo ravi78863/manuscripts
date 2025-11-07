@@ -1,0 +1,109 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+.card {
+    border-radius: 0.75rem;
+    border: none;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    font-weight: bold;
+    background-color: #e9ecef;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
+    padding: 0.75rem 1.25rem;
+}
+
+.result-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+#damagePercentage {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#loadingSpinner {
+    color: #0d6efd;
+    /* Primary blue */
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* --- New Drop Zone Styles --- */
+
+/* The main drop zone container */
+.drop-zone {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border: 2px dashed #0d6efd;
+    /* Primary blue dashed border */
+    border-radius: 0.75rem;
+    background-color: #f8f9fa;
+    /* Light gray background */
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+/* Style when user is dragging a file over the box */
+.drop-zone-over {
+    background-color: #e0e9ff;
+    /* Light blue background */
+    border-color: #0a58ca;
+    /* Darker blue border */
+}
+
+/* The prompt text like "Click or Drag..." */
+.drop-zone-prompt {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #333;
+    margin-top: 15px;
+}
+
+/* The "Supports PNG..." text */
+.drop-zone-formats {
+    font-size: 0.9rem;
+    color: #6c757d;
+    /* Muted gray text */
+    margin-top: 5px;
+}
+
+/* The upload icon */
+.upload-icon {
+    width: 40px;
+    height: 40px;
+    color: #0d6efd;
+    /* Primary blue */
+}
+
+/* This is the actual file input - we hide it */
+#manuscriptImage {
+    display: none;
+}
