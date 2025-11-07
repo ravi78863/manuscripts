@@ -11,10 +11,10 @@ import importlib
 # --- CRUCIAL IMPORT FIX ---
 # Dynamically import get_model from model/legacy_models.py, no hardcoded path
 try:
-    legacy = importlib.import_module("model.legacy_models")
-    get_model = getattr(legacy, "get_model")
+    from model.legacy_models import get_model
+    print("✅ Successfully imported get_model from model/legacy_models.py")
 except Exception as e:
-    print(f"❌ Failed to import get_model from model/legacy_models.py: {e}")
+    print(f"❌ Error importing get_model: {e}")
     get_model = None
 
 
