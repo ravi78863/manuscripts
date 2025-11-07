@@ -131,6 +131,7 @@ def cleanup(exception=None):
 
 # ---------------- App Runner ----------------
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    print(f"🚀 Starting Flask on port {port}")
-    app.run(host="0.0.0.0", port=port, debug=False)
+    import os
+    port = int(os.environ.get("PORT", 10000))  # ✅ Render dynamically provides this
+    print(f"🚀 Starting Flask on port {port} (Render auto-assigned)")
+    app.run(host="0.0.0.0", port=port)
